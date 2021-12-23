@@ -2,6 +2,7 @@
 import Cliente from "../models/cliente.model.js";
 
 async function insertCliente(cliente) {
+//cria um cliente no banco de dados SQL utilizando sequelize
   try {
     return await Cliente.create(cliente);
   } catch (err) {
@@ -10,6 +11,7 @@ async function insertCliente(cliente) {
 }
 
 async function getClientes() {
+//retorna todos os clientes do banco de dados
   try {
     return await Cliente.findAll();
   } catch (err) {
@@ -17,6 +19,7 @@ async function getClientes() {
   }
 }
 async function getClienteId(id) {
+//retorna um cliente escolhido pelo id
   try {
     return await Cliente.findByPk(id);
   } catch (err) {
@@ -25,6 +28,7 @@ async function getClienteId(id) {
 }
 
 async function updateCliente(cliente) {
+//atualiza um cliente escolhido pelo id
   try {
     await Cliente.update(cliente, { where: { cliente_id: cliente.cliente_id } });
 
@@ -34,6 +38,7 @@ async function updateCliente(cliente) {
   }
 }
 async function deleteCliente(id) {
+//deleta um cliente escolhido pelo id
   try {
     await Cliente.destroy({
       where: {
@@ -46,6 +51,7 @@ async function deleteCliente(id) {
 }
 
 export default {
+//exporta todas as funções
   insertCliente,
   updateCliente,
   getClientes,
