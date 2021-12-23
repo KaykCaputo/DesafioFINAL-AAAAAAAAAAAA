@@ -1,4 +1,4 @@
-import db from "./db.js";
+
 import Cliente from "../models/cliente.model.js";
 
 async function insertCliente(cliente) {
@@ -37,7 +37,7 @@ async function deleteCliente(id) {
   try {
     await Cliente.destroy({
       where: {
-        animal_id: id,
+        cliente_id: id,
       },
     });
   } catch (err) {
@@ -50,5 +50,5 @@ export default {
   updateCliente,
   getClientes,
   deleteCliente,
-  getClienteId,
+  getClienteId
 };

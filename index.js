@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import winston from "winston";
-import autoresRouter from "./routes/autores.router.js"
-import livrosRouter from "./routes/livros.router.js"
+// import autoresRouter from "./routes/autores.router.js"
+// import livrosRouter from "./routes/livros.router.js"
 import clientesRouter from "./routes/clientes.router.js"
-import vendasRouter from "./routes/vendas.router.js"
+// import vendasRouter from "./routes/vendas.router.js"
 import format from "logform";
 
 const { combine, timestamp, label, printf } = winston.format;
@@ -25,15 +25,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/clientes", clientesRouter);
-app.use("/vendas", vendasRouter);
-app.use("/livros", livrosRouter);
-app.use("/autores", autoresRouter);
+// app.use("/vendas", vendasRouter);
+// app.use("/livros", livrosRouter);
+// app.use("/autores", autoresRouter);
 
 app.use((err, req, res, next) => {
   logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);
   res.status("400").send({ error: err.message });
 });
 
-app.listen(3000, () => {
+app.listen(3202, () => {
   console.log("API STARTED");
 });

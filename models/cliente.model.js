@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import db from "../repositories/db.js";
+import db from "../services/db.js";
 
 const Clientes = db.define("clientes", {
   cliente_id: {
@@ -31,7 +31,7 @@ const Clientes = db.define("clientes", {
   endereço: {
     type: Sequelize.STRING,
     allowNull: false,
-  },
+  }
 });
 
 export default Clientes;
