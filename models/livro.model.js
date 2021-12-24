@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import db from "../repositories/db.js";
+import db from "../services/db.js"
 import Autores from "./autor.model.js";
 
 const Livros = db.define("livros", {

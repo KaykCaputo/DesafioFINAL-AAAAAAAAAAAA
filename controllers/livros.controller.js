@@ -1,4 +1,4 @@
-import livrosService from "../services/livros.service";
+import livrosService from "../services/livros.service.js";
 
 function livroValido(livro) {
   return livro.nome && livro.valor && livro.autor_id;
