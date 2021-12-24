@@ -1,8 +1,7 @@
-
 import Cliente from "../models/cliente.model.js";
 
 async function insertCliente(cliente) {
-//cria um cliente no banco de dados SQL utilizando sequelize
+  //cria um cliente no banco de dados SQL utilizando sequelize
   try {
     return await Cliente.create(cliente);
   } catch (err) {
@@ -11,26 +10,46 @@ async function insertCliente(cliente) {
 }
 
 async function getClientes() {
-//retorna todos os clientes do banco de dados
+  //retorna todos os clientes do banco de dados
   try {
-    return await Cliente.findAll();
+    return await Cliente.findAll({
+      attributes: [
+        "cliente_id",
+        "nome",
+        "email",
+        "cpf",
+        "telefone",
+        "endereço",
+      ]
+    });
   } catch (err) {
     throw err;
   }
 }
 async function getClienteId(id) {
-//retorna um cliente escolhido pelo id
+  //retorna um cliente escolhido pelo id
   try {
-    return await Cliente.findByPk(id);
+    return await Cliente.findByPk(id, {
+      attributes: [
+        "cliente_id",
+        "nome",
+        "email",
+        "cpf",
+        "telefone",
+        "endereço",
+      ],
+    });
   } catch (err) {
     throw err;
   }
 }
 
 async function updateCliente(cliente) {
-//atualiza um cliente escolhido pelo id
+  //atualiza um cliente escolhido pelo id
   try {
-    await Cliente.update(cliente, { where: { cliente_id: cliente.cliente_id } });
+    await Cliente.update(cliente, {
+      where: { cliente_id: cliente.cliente_id },
+    });
 
     return await getClienteId(cliente.cliente_id);
   } catch (err) {
@@ -38,7 +57,7 @@ async function updateCliente(cliente) {
   }
 }
 async function deleteCliente(id) {
-//deleta um cliente escolhido pelo id
+  //deleta um cliente escolhido pelo id
   try {
     await Cliente.destroy({
       where: {
@@ -51,10 +70,10 @@ async function deleteCliente(id) {
 }
 
 export default {
-//exporta todas as funções
+  //exporta todas as funções
   insertCliente,
   updateCliente,
   getClientes,
   deleteCliente,
-  getClienteId
+  getClienteId,
 };

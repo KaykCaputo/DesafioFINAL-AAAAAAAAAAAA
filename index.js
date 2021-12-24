@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import winston from "winston";
-// import autoresRouter from "./routes/autores.router.js"
+import autoresRouter from "./routes/autores.router.js"
 // import livrosRouter from "./routes/livros.router.js"
 import clientesRouter from "./routes/clientes.router.js"
 // import vendasRouter from "./routes/vendas.router.js"
@@ -27,7 +27,7 @@ app.use(cors());
 app.use("/clientes", clientesRouter);
 // app.use("/vendas", vendasRouter);
 // app.use("/livros", livrosRouter);
-// app.use("/autores", autoresRouter);
+app.use("/autores", autoresRouter);
 
 app.use((err, req, res, next) => {
   logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);

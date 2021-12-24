@@ -2,7 +2,7 @@ import pg from "pg";
 import Sequelize from "sequelize";
 
 const sequelize = new Sequelize(
-  "URI do banco de dados",
+  process.env.URLDB,
   {
     dialect: "postgres",
     define: {
